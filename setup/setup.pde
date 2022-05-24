@@ -4,16 +4,20 @@ planet custom;
 
 void setup(){
     size(800,500);
+    
 }
 void mouseClicked(){
   start=true;
 }
 void draw(){
   background(255);
-  if (mode=='CH)
+  planet pl=new planet();
+  if (mode=='C'){
+    pl.drawPlanet();
+  }
   
   if(start==true){
-    move();
+    pl.move();
   }
   
 }
