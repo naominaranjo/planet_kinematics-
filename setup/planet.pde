@@ -1,4 +1,6 @@
 public class planet{
+  int Radd=0;
+  int Rminus=0;
   float radius;
   float mass;
   float g;
@@ -33,7 +35,8 @@ public class planet{
     stroke(100,200,255);
     rect(width/2,0,width/2,height);
     fill(0);
-    mouseClicked();
+    
+    update(mouseX,mouseY);
     text("RADIUS ("+radCon(radius)+")", (width/2)+40, 100);
     text("MASS ("+mass+")", (width/2)+40, 250);
     fill(255);
@@ -49,10 +52,28 @@ public class planet{
     
   }
   void mouseClicked(){
-      if(mouseX>width/2+40&&mouseX<width/2+70&&
-      mouseY>150&&mouseY<180){
-        radius=radius*1.3;
+      if(Radd>0){
+        radius*=pow(1.3,Radd);
+      }
+      if(Rminus>0){
+        radius*=pow(0.7,Rminus);
       }
     }
+  void update(float x, float y){
+    if(RclickPlus()){
+      Radd+=1;
+    }
+    if(RclickMinus()){
+      Rminus+=1;
+    }
+  }
+  boolean RclickPlus(){
+    return (mouseX>width/2+40 && mouseX<width/2+70
+    && mouseY>150 && mouseY<180);
+  }
+  boolean RclickMinus(){
+    return (mouseX>width/2+150 && mouseX<width/2+180
+    && mouseY>150 && mouseY<180);
+  }
   
 }
