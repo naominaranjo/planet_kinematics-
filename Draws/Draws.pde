@@ -1,4 +1,5 @@
 static char mode = 'C';
+planet pl=new planet();
 static boolean start= false;
 planet custom;
 
@@ -6,13 +7,29 @@ void setup(){
     size(800,500);
     
 }
+void mouseClicked(){
+  if(pl.Radd){
+    pl.radius+= 5;
+    pl.Radd=false;
+  }
+  if(pl.Rminus){
+    pl.radius-= 5;
+    pl.Rminus=false;
+  }
+  if(pl.DONE==true){
+    mode= '_'; //when done is pressed
+  }
+  if(pl.PLANET==true){
+    mode='C';
+  }
+ }
 void draw(){
   background(255);
-  planet pl=new planet();
+  
   if (mode=='C'){
     pl.drawPlanet(); //draws planet creation screen
   }
-  if (mode=='_'){
+  else if (mode=='_'){
     pl.drawInst(); //draws instruction screen for finished planet
   }
   
@@ -21,16 +38,4 @@ void draw(){
   }
 } 
  
- void mouseClicked(){
-  if(pl.Radd>0&&){
-    pl.radius*=pow(1.3, Radd);
-    Radd=0;
-  }
-  if(pl.Rminus>0){
-    pl.radius*=pow(0.7, Rminus);
-    Rminus=0;
-  }
-  if(DONE==True){
-    mode= '_'; //when done is pressed
-  }
- }
+ 
