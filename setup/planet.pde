@@ -34,7 +34,10 @@ public class planet{
     fill(100,200,255);
     stroke(100,200,255);
     rect(width/2,0,width/2,height);
+    fill(100,200,255)
+    rect(40,40,40,20);
     fill(0);
+    text("DONE", 40,40);
     
     update(mouseX,mouseY);
     text("RADIUS ("+radCon(radius)+")", (width/2)+40, 100);
@@ -47,18 +50,9 @@ public class planet{
     rect(width/2+40,310,30,10);
     rect(width/2+50,300,10,30);
     rect(width/2+150,310,30,10);
-    fill(0);
-    text("PRESS P FOR PROJECTILE SIMULATION", 20,40);
     
   }
-  void mouseClicked(){
-      if(Radd>0){
-        radius*=pow(1.3,Radd);
-      }
-      if(Rminus>0){
-        radius*=pow(0.7,Rminus);
-      }
-    }
+
   void update(float x, float y){
     if(RclickPlus()){
       Radd+=1;
