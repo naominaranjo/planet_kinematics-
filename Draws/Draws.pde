@@ -16,6 +16,14 @@ void mouseClicked(){
     pl.radius-= 5;
     pl.Rminus=false;
   }
+  if(pl.Madd){
+    pl.mass+= .5*pow(10,24);
+    pl.Madd=false;
+  }
+  if(pl.Mminus){
+    pl.mass-=  .5*pow(10,24);
+    pl.Mminus=false;
+  }
   if(pl.DONE==true){
     mode= '_'; //when done is pressed
   }
@@ -23,6 +31,11 @@ void mouseClicked(){
     mode='C';
   }
  }
+void keyPressed(){
+  if(key=='w'){
+    mode='W';
+  }
+}
 void draw(){
   background(255);
   
@@ -31,6 +44,11 @@ void draw(){
   }
   else if (mode=='_'){
     pl.drawInst(); //draws instruction screen for finished planet
+  }
+  else if(mode=='W'){
+    pl.PlANET=false;
+    pl.DONE=false;
+    drawInfo();
   }
   
   if(start==true){
