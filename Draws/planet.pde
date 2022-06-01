@@ -26,7 +26,7 @@ public class planet{
     text("DONE", 40,50);
     text("RADIUS ("+radCon(radius)+")", (width/2)+40, 100);
     text("MASS ("+mass+")", (width/2)+40, 250);
-    g = ((6.67 * pow(10, -11)) * mass)/(pow(radCon(radius),2));
+    g = -((6.67 * pow(10, -11)) * mass)/(pow(radCon(radius),2));
     //print(g);
     fill(255);
     rect(width/2+40,160,30,10);

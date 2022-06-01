@@ -2,7 +2,7 @@ static char mode = 'C';
 planet pl=new planet();
 static boolean start= false;
 planet custom;
-
+projectile p= new projectile(40,400);
 void setup(){
     size(800,500);
     
@@ -35,6 +35,21 @@ void keyPressed(){
   if(key=='w'){
     mode='W';
   }
+  if(key=='p'&&mode!='C'){
+    mode='P';
+  }
+  if (mode=='P'&&key == CODED) {
+    if (keyCode == UP) {
+      p.v1+=2;
+    } else if (keyCode == DOWN&&p.v1>2) {
+      p.v1-=2;
+    }
+    if (keyCode == LEFT) {
+      p.theta+=5*(180/PI);
+    } else if (keyCode == RIGHT&&p.theta>5*(180/PI)) {
+      pp.theta-=5*(180/PI);
+    }
+  }
 }
 void draw(){
   background(255);
@@ -46,14 +61,20 @@ void draw(){
     pl.drawInst(); //draws instruction screen for finished planet
   }
   else if(mode=='W'){
-    pl.PlANET=false;
+    pl.PLANET=false;
     pl.DONE=false;
     drawInfo();
   }
-  
-  if(start==true){
-    pl.move();
+  else if(mode=='P'){
+    pl.PLANET=false;
+    pl.DONE=false;
+    
+    if(start==true){
+      p.launch();
+    }
+    p.Pdraw();
   }
+  
 } 
  
  
