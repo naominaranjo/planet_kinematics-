@@ -1,7 +1,6 @@
 static char mode = 'C';
 planet pl=new planet();
 static boolean start= false;
-planet custom;
 
 void setup(){
     size(800,500);
@@ -35,6 +34,9 @@ void keyPressed(){
   if(key=='w'){
     mode='W';
   }
+  if(key=='p'&&mode!='C'){
+    mode='P';
+  }
 }
 void draw(){
   background(255);
@@ -46,13 +48,16 @@ void draw(){
     pl.drawInst(); //draws instruction screen for finished planet
   }
   else if(mode=='W'){
-    pl.PlANET=false;
+    pl.PLANET=false;
     pl.DONE=false;
     drawInfo();
   }
-  
+  else if(mode=='P'){
+    projectile p= pl.makeProj(20,100);
+    p.Pdraw();
+  }
   if(start==true){
-    pl.move();
+    //pl.move();
   }
 } 
  

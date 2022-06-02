@@ -8,6 +8,7 @@ public class planet{
   float g;
   boolean DONE;
   boolean PLANET;
+  projectile pro;
   planet(){
     radius=63;
     mass=(5.97*pow(10,24));
@@ -100,5 +101,9 @@ public class planet{
   boolean MclickMinus(){
     return (mode=='C'&&mouseX>width/2+150 && mouseX<width/2+180
     && mouseY>300 && mouseY<330);
+  }
+  projectile makeProj(float x,float y){
+    pro=new projectile(x,y);
+    return pro;
   }
 }
