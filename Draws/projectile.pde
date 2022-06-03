@@ -13,13 +13,14 @@ public class projectile{
     fill(0);
     text("UP to increase velocity, RIGHT to decrease* velocity", 40,20);
     text("+ to increase height, - to decrease height", 350,20);
-    text("LEFT to increase theta, RIGHT to decrease theta", 40,50);
+    text("LEFT to increase theta, RIGHT to decrease theta", 40,40);
+    text("SPACE to shoot", 40,60);
     text("INITIAL VELOCITY: "+v1,50,445);
     text("INITIAL ANGLE: "+(theta*180/PI),50,430);
     text("INITIAL HEIGHT: "+h,50,460);
-    text("dx="+dx,100,100);
-    text("dy="+dy,100,120);
-    text("g="+pl.g,100,140);
+    //text("dx="+dx,100,100);
+    //text("dy="+dy,100,120);
+    //text("g="+pl.g,100,140);
     fill(200,0,0);
     rect(780,250,20,40);
     
@@ -50,7 +51,7 @@ public class projectile{
     if(y-dy*.7<=50){
       dy=-dy;
     }
-   if(abs(x-770)<5&&y>250&&y<290&&start){
+   if(x>760&&y>250&&y<290&&start&&dx!=0){
       achieve=true;
     }
     

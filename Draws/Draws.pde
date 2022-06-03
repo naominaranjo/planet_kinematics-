@@ -1,11 +1,13 @@
 char mode = 'C';
 float theta=PI/6;
+float friction;
   float v1;
   float h=0;
 planet pl=new planet();
 boolean start= false;
 planet custom;
 projectile p= new projectile(theta,v1,h);
+incline f= new incline(theta,friction);
 boolean achieve=false;
 void setup(){
     size(800,500);
@@ -36,14 +38,28 @@ void mouseClicked(){
   }
  }
 void keyPressed(){
-  if(key=='w'){
+  if(key=='w'&&mode!='C'){
     mode='W';
   }
   if(key=='p'&&mode!='C'){
     mode='P';
+    theta=PI/6;
+    start=false;
+  }
+  if(key=='i'&&mode!='C'){
+    mode='I';
+    theta=PI/6;
+    start=false;
   }
   if (key=='c'){
     mode='C';
+  }
+  if (mode=='I'&&key == CODED&&!start) {
+    if(keyCode == RIGHT&&theta>=-PI/2-0.05) {
+      theta+=.05;
+    } else if (keyCode == LEFT&&theta>=.05) {
+      theta-=.05;
+    }
   }
   if (mode=='P'&&key == CODED&&!start) {
     if (keyCode == UP) {
@@ -96,10 +112,16 @@ void draw(){
     pl.DONE=false;
     drawInfo();
   }
+  else if(mode=='I'){
+    pl.PLANET=false;
+    pl.DONE=false;
+    f.drawSlope();
+  }
   else if(mode=='P'){
     pl.PLANET=false;
     pl.DONE=false;
     p.Pdraw();
+    
     if(start){
       p.Pmove();
     }
@@ -109,6 +131,8 @@ void draw(){
       p.dx=v1*cos(theta);
       p.dy=v1*sin(theta);
     }
+    
+    p.drawP();
     if (achieve&&start){
       fill(255,255,0,200);
       ellipse(400,250,100,100);
@@ -119,8 +143,7 @@ void draw(){
       noFill();
       arc(400,265, 40, 40, 0,PI);
     }
-    p.drawP();
-    
+    if (!start){achieve=false;}
     
   }
   
