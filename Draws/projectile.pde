@@ -1,49 +1,59 @@
 public class projectile{
   float x, y;
-  float theta=PI/6;
-  float v1;
   float dy,dx;
   
-  public projectile(float x1,float y1){
-    v1=0;
-    x=x1;
-    y=y1;
-    dx=v1*sin(theta);
-    dy=v1*cos(theta);
+  public projectile(float th,float v,float hi){
+    x=40+30*cos(th);
+    y=400-30*sin(th)-hi;
+    dx=v*cos(th);
+    dy=v*sin(th);
   }
   
-  }
   void Pdraw(){
     fill(0);
     text("UP to increase velocity, RIGHT to decrease* velocity", 40,20);
-    text("*decreasing is invalid when initial velocity is 0",40,30);
+    text("+ to increase height, - to decrease height", 350,20);
     text("LEFT to increase theta, RIGHT to decrease theta", 40,50);
-    text("INITIAL VELOCITY: "+v1,50,420);
-    text("INITIAL ANGLE: "+(theta*180/PI),50,410);
+    text("INITIAL VELOCITY: "+v1,50,445);
+    text("INITIAL ANGLE: "+(theta*180/PI),50,430);
+    text("INITIAL HEIGHT: "+h,50,460);
+    text("dx="+dx,100,100);
+    text("dy="+dy,100,120);
+    text("g="+pl.g,100,140);
+    fill(200,0,0);
+    rect(780,250,20,40);
+    
     stroke(0);
     line(0,400,width,400);
+    line(40,400-h,40+30*cos(theta),400-h-30*sin(theta));
     
-    line(40,400,40+30*cos(theta),400-30*sin(theta));
+  }
+  void drawP(){
     fill(100,200,255,150);
-    ellipse(40+30*cos(theta),400-30*sin(theta),20,20);
+    ellipse(x,y,20,20);
+    
   }
   void launch(){
-    dx=v1*sin(theta);
-    dy=v1*cos(theta);
     Pmove();
   }
   void Pmove(){
-    if(x>width ||x<0){
-      dx = 0;    
+    x += dx*.7;
+    y -= dy*.7;
+    dy -= pl.g/10;
+    if(x+dx*.7>width-10||x+dx*.7<40){
+      dx=0;
     }
-    if(y>height||y<0){
-      dy = 0;
+    if(y-dy*.7>=400-10){
+      dy=0;
+      dx=0;
     }
-    else{
-      x += dx;
-      y += dy;
-      dy += pl.g;
+    if(y-dy*.7<=50){
+      dy=-dy;
     }
+   if(abs(x-770)<5&&y>250&&y<290&&start){
+      achieve=true;
+    }
+    
   }
 
 }
