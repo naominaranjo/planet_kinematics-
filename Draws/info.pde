@@ -7,5 +7,4 @@ void drawInfo(){
   text("MASS: "+pl.mass, 50,100);
   text("ACCELERATION DUE TO GRAVITY: "+pl.g, 50,150);
   
-
 }

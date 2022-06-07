@@ -1,14 +1,15 @@
 char mode = 'C';
 float theta=PI/6;
 float friction;
-  float v1;
-  float h=0;
+float v1;
+float h=0;
 planet pl=new planet();
 boolean start= false;
 planet custom;
 projectile p= new projectile(theta,v1,h);
 incline f= new incline(theta,friction);
 boolean achieve=false;
+
 void setup(){
     size(800,500);
     
@@ -37,6 +38,7 @@ void mouseClicked(){
     mode='C';
   }
  }
+ 
 void keyPressed(){
   if(key=='w'&&mode!='C'){
     mode='W';
@@ -48,16 +50,16 @@ void keyPressed(){
   }
   if(key=='i'&&mode!='C'){
     mode='I';
-    theta=PI/6;
+    theta=11*PI/6;
     start=false;
   }
   if (key=='c'){
     mode='C';
   }
   if (mode=='I'&&key == CODED&&!start) {
-    if(keyCode == RIGHT&&theta>=-PI/2-0.05) {
+    if(keyCode == RIGHT&&h<=400-5) {
       theta+=.05;
-    } else if (keyCode == LEFT&&theta>=.05) {
+    } if (keyCode == LEFT&&h>=5) {
       theta-=.05;
     }
   }
@@ -95,6 +97,7 @@ void keyPressed(){
     start=!start;
   }
 }
+
 void draw(){
   background(255);
   
