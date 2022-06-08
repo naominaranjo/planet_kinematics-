@@ -47,10 +47,12 @@ void keyPressed(){
     mode='P';
     theta=PI/6;
     start=false;
+    h=0;
   }
   if(key=='i'&&mode!='C'){
     mode='I';
-    theta=11*PI/6;
+    h=0;
+    theta=atan((400-h)/(width/2));
     start=false;
   }
   if (key=='c'){
@@ -58,10 +60,15 @@ void keyPressed(){
   }
   if (mode=='I'&&key == CODED&&!start) {
     if(keyCode == RIGHT&&h<=400-5) {
-      theta+=.05;
+      h+=5;
     } if (keyCode == LEFT&&h>=5) {
-      theta-=.05;
+      h-=5;
     }
+    theta=atan((400-h)/(width/2));
+    float diff=10*tan(theta);
+    f.y=h+diff-10;
+    f.dy=pl.g*sin(theta)*sin(theta);
+    f.dx=pl.g*sin(theta)*cos(theta);
   }
   if (mode=='P'&&key == CODED&&!start) {
     if (keyCode == UP) {
@@ -93,7 +100,7 @@ void keyPressed(){
       p.y=400-30*sin(theta)-h;
     }
   }
-  if(mode=='P'&&key==' '){
+  if((mode=='P'||mode=='I')&&key==' '){
     start=!start;
   }
 }
@@ -119,6 +126,17 @@ void draw(){
     pl.PLANET=false;
     pl.DONE=false;
     f.drawSlope();
+    f.drawO();
+    if(start){
+      f.imove();
+    }
+    else{
+      f.x=800-10;
+      float diff=10*tan(theta);
+      f.y=h+diff-10;
+      f.dy=pl.g*sin(theta)*sin(theta);
+      f.dx=pl.g*sin(theta)*cos(theta);
+    }
   }
   else if(mode=='P'){
     pl.PLANET=false;

@@ -41,7 +41,10 @@ public class projectile{
     x += dx*.7;
     y -= dy*.7;
     dy -= pl.g/10;
-    if(x+dx*.7>width-10||x+dx*.7<40){
+    if(x>760&&y>250&&y<290&&start&&dx>0){
+      achieve=true;
+    }
+    if(x+dx*.7>=width||x+dx*.7<40){
       dx=0;
     }
     if(y-dy*.7>=400-10){
@@ -51,9 +54,7 @@ public class projectile{
     if(y-dy*.7<=50){
       dy=-dy;
     }
-   if(x>760&&y>250&&y<290&&start&&dx!=0){
-      achieve=true;
-    }
+   
     
   }
 
