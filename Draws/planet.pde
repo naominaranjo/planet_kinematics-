@@ -16,6 +16,7 @@ public class planet{
     return (r/10)*pow(10,6);
   }
   void drawPlanet(){
+    textSize(12);
     update(mouseX,mouseY);
     fill(100,200,255);
     stroke(100,200,255);

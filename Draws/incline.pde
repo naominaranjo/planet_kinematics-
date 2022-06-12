@@ -2,9 +2,8 @@ public class incline{
   float x=800-10; float diff=10*tan(theta);
   float y=h+diff-10;
   float dy,dx;
-  float grava;
+  float grava=pl.g;
   public incline(float t){
-    grava=pl.g;
     dy=grava*sin(t);
     dx=grava*cos(t);
   }
@@ -23,18 +22,21 @@ public class incline{
   void drawO(){
     fill(100,200,255,150);
     ellipse(x,y,20,20);
-    text(""+grava,100,100);
+    text(""+pl.g,100,100);
     text(""+dy,100,110);
     text(""+dx,100,120);
   }
   void imove(){
     //x -= dx;
+    if(dy<=0.001){dy=0;}if(dx<=0.01){dx=0;}
     y += dy;
     x -= dx;
+    if(y<=400&&x>10){dy += pl.g*0.01*sin(theta);
+    dx += pl.g*0.01*cos(theta);}
     dx-=dx*friction*0.05;
     dy-=dy*friction*0.05;
-    if(dy<=0.001){dy=0;}if(dx<=0.01){dx=0;}
-    if(x<=x-dx){
+    
+    if(x<=10+dx){
       dx=0;
     }
     if(y>=400-10){

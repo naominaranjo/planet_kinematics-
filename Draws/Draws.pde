@@ -19,16 +19,16 @@ void mouseClicked(){
     pl.radius+= 5;
     pl.Radd=false;
   }
-  if(pl.Rminus){
+  if(pl.Rminus&&pl.radius>=15){
     pl.radius-= 5;
     pl.Rminus=false;
   }
   if(pl.Madd){
-    pl.mass+= .5*pow(10,24);
+    pl.mass+= 1*pow(10,23);
     pl.Madd=false;
   }
-  if(pl.Mminus){
-    pl.mass-=  .5*pow(10,24);
+  if(pl.Mminus&&pl.mass>=.5*pow(10,23)){
+    pl.mass-= 1*pow(10,23);
     pl.Mminus=false;
   }
   if(pl.DONE==true){
@@ -114,6 +114,7 @@ void draw(){
   background(255);
   
   if (mode=='C'){
+    pl.DONE=false;
     pl.drawPlanet(); 
   if(mode=='P'&&start){
     p.Pdraw();
