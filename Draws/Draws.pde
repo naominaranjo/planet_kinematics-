@@ -7,7 +7,7 @@ planet pl=new planet();
 boolean start= false;
 planet custom;
 projectile p= new projectile(theta,v1,h);
-incline f= new incline(theta,friction);
+incline f= new incline(theta);
 boolean achieve=false;
 
 void setup(){
@@ -63,6 +63,11 @@ void keyPressed(){
       h+=5;
     } if (keyCode == LEFT&&h>=5) {
       h-=5;
+    }
+    if(keyCode == UP&&friction<=.8) {
+      friction+=0.05;
+    } if (keyCode == DOWN&&friction>=.10) {
+      friction-=0.05;
     }
     theta=atan((400-h)/(width/2));
     float diff=10*tan(theta);
