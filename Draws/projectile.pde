@@ -11,7 +11,7 @@ public class projectile{
   
   void Pdraw(){
     fill(0);
-    text("UP to increase velocity, RIGHT to decrease* velocity", 40,20);
+    text("UP to increase velocity, DOWN to decrease* velocity", 40,20);
     text("+ to increase height, - to decrease height", 350,20);
     text("LEFT to increase theta, RIGHT to decrease theta", 40,40);
     text("SPACE to shoot", 40,60);

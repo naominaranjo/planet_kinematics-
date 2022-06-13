@@ -48,6 +48,7 @@ public class planet{
     text("PRESS P TO USE PROJECTILE SIMULATION",50,50);
     text("PRESS I TO USE INCLINED PLANE SIMULATION",50,70);
     text("PRESS W TO SEE STATS OF YOUR PLANET",50,90);
+    text("PRESS C TO EDIT OR CREATE A NEW PLANET",50,110);
     rect(50,400,50,40);
     fill(100,200,255);
     text("BACK", 60,420);
